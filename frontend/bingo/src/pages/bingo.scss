@@ -1,0 +1,35 @@
+/* Bingo.scss */
+
+.container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: transparent;
+    text-align: center;
+    color: white;
+    h1 {
+        font-size: 5vh;
+        position: relative;
+        bottom: 10vh;
+    }
+    h2 {
+        font-size: 2vh;
+        position: relative;
+        top: -13vh;
+    }
+    .grid {
+        position: relative;
+        top: -8.5vh;
+    }
+    button {
+        width: 12vw;
+        height: 5.5vh;
+        background-color: grey;
+        border-radius: 3vh;
+        color: white;
+        font-size: 1vh;
+    }
+  }

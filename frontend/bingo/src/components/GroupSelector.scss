@@ -1,0 +1,41 @@
+.GroupSelector {
+    position: relative;
+    top: -5vh;
+    color: white;
+    font-size: 2vh;
+  
+    label {
+      display: block;
+      width: 30vw;
+      margin-bottom: 3vh;
+    }
+    .transparent-input {
+      position: relative;
+      margin-top: 28vh;
+      width: 30vw;
+      padding: 1vh;
+      background-color: transparent;
+      border: none;
+      color: #ccc; /* 灰色的文字 */
+      font-size: 2vh;
+      outline: none;
+      
+      ::placeholder {
+        color: #ccc; /* 灰色的提示词 */
+      }
+    }
+    .input-hint {
+      position: relative;
+      top: 2vh;
+      padding: 1vh;
+      color: rgba(87, 87, 87, 0.719);
+      font-size: 1.5vh; // 适当调整大小
+      margin-top: 0.5vh; // 与输入框之间留一些间距
+      width: 31vw; // 宽度和输入框保持一致
+      text-align: left; // 让文字靠左对齐
+      height: 10vh;
+      border: 1px solid grey;
+    }
+    
+  }
+  

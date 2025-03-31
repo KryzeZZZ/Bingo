@@ -1,0 +1,42 @@
+.container {
+    min-height: 60vh !important;
+    bottom: -20vh;
+    gap:0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.title {
+
+    bottom: 0     !important;
+}
+.subtitle {
+    position: relative;
+    bottom: 0;
+    font-size: 2vh;
+}
+
+.video-player {
+    width: 45vw;
+    height: 45vh;
+}
+.question {
+    font-size: 1.8vw;
+}
+.options {
+    font-size: 1.8vw !important;
+    display: flex;
+    gap: 2vw;
+}
+input[type="radio"] {
+    width: 2vw;   /* 设置单选框的宽度 */
+    height: 20px;  /* 设置单选框的高度 */
+    margin-right: 5px;  /* 让标签与单选框之间有一点间距 */
+    position: relative;
+    bottom: -0.2vw;
+  }
+
+button {
+    position: relative;
+    top: 8vh;
+}
