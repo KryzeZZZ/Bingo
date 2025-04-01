@@ -1,0 +1,10 @@
+.slogan-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .top-slogan {
+    min-width: 200px;
+    max-width: 400px;
+    width: 25vw;
+  }
+}

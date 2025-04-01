@@ -1,25 +1,30 @@
 .GroupSelector {
-    position: relative;
-    top: -5vh;
     color: white;
     font-size: 2vh;
-  
+
     label {
       display: block;
       width: 30vw;
       margin-bottom: 3vh;
     }
+  .GroupContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
     .transparent-input {
       position: relative;
       margin-top: 28vh;
       width: 30vw;
+      min-width: 250px;
       padding: 1vh;
       background-color: transparent;
       border: none;
       color: #ccc; /* 灰色的文字 */
       font-size: 2vh;
       outline: none;
-      
+
       ::placeholder {
         color: #ccc; /* 灰色的提示词 */
       }
@@ -36,6 +41,5 @@
       height: 10vh;
       border: 1px solid grey;
     }
-    
+
   }
-  

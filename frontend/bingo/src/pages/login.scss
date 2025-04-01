@@ -5,12 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    img {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+    gap: 5vh;
     .title {
         width: 20vw;
         height: 10vh;
@@ -23,5 +18,14 @@
         justify-content: center;
         align-items: center;
         font-size: 9vh;
+    }
+    .btn-confirm{
+        border: 1px solid #FFFFFF4D;
+        background-color: rgb(53, 53, 53);
+        align-self: center;
+        width: 268px;
+        height: 62px;
+        border-radius: 8px;
+        margin-top: 120px;
     }
   }
