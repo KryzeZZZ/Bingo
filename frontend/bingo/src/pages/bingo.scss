@@ -1,6 +1,6 @@
 /* Bingo.scss */
 
-.container {
+.bingo-container {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -10,6 +10,7 @@
     background-color: transparent;
     text-align: center;
     color: white;
+    gap: 20px;
     h1 {
         font-size: 5vh;
         position: relative;
@@ -19,10 +20,6 @@
         font-size: 2vh;
         position: relative;
         top: -13vh;
-    }
-    .grid {
-        position: relative;
-        top: -8.5vh;
     }
     button {
         width: 12vw;

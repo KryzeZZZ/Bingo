@@ -6,44 +6,29 @@
 }
 
 .cell {
+  background-color: rgba(255,255,255,0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
   border: 1px solid #ccc;
   font-size: 20px;
   font-weight: bold;
   color: white;
-  padding: 10px;
   text-align: center;
 }
+.content-wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  .state-0, .state-1, .state-2 {
+    font-size: 1.2vh; /* 文字和勾、叉图标的统一大小 */
+  }
 
-.video-name {
-  position: relative;
-  bottom: 4vh;
-  font-size: 2vh; /* 视频名字字体大小 */
-  font-weight: normal; /* 使视频名字不加粗 */
-  margin-bottom: 1.5vh; /* 增加下边距，确保名字和状态之间有间隔 */
+  .state-1 {
+    color: white; /* 勾的颜色 */
+    font-size: 3.6vh;
+  }
 }
 
-.state-0, .state-1, .state--1 {
-  position: relative;
-  top: -2vh;
-  font-size: 1.2vh; /* 文字和勾、叉图标的统一大小 */
-  margin-top: 1vh;  /* 增加顶部间距，避免名字与状态图标重叠 */
-}
-
-.state-1 {
-  color: white; /* 勾的颜色 */
-  font-size: 3.6vh;
-  top: 0vh;
-  margin-top: -2vh;
-}
-
-.state--1 {
-  color: white; /* 叉号的颜色 */
-  font-size: 3.6vh;
-  top: 0vh;
-  margin-top: -2vh;
-}

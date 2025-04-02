@@ -1,0 +1,49 @@
+# HTTP 自动跳转 HTTPS
+server {
+    listen 80;
+    server_name msadream.cn www.msadream.cn;
+    location /api/ {
+	client_max_body_size 10M;
+        proxy_pass http://localhost:9959/;
+    }
+    location /test/api/{
+        client_max_body_size 10M;
+        proxy_pass http://localhost:9958/;      
+    }
+    return 301 https://$host$request_uri;
+
+}
+
+# HTTPS 配置
+server {
+    listen 443 ssl;
+    server_name msadream.cn www.msadream.cn;
+
+    ssl_certificate /etc/nginx/certs/msadream.cn.pem;
+    ssl_certificate_key /etc/nginx/certs/msadream.cn.key;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+
+    root /m48server/frontend;
+    index index.html;
+
+    location = /bingo {
+        root /m48server/frontend;
+        try_files /bingo.html =404;
+    }
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /api/ {
+	client_max_body_size 10M;
+        proxy_pass http://localhost:9959/;
+    }
+
+    location /test/api/{
+	client_max_body_size 10M;
+	proxy_pass http://localhost:9958/;	
+    }
+}

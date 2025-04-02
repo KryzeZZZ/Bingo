@@ -24,6 +24,8 @@ public class VideoEntity {
 
     @Column(nullable = false)
     private String url;
+    @Column(nullable = false)
+    private Long second;
 
     @OneToMany(mappedBy = "video")
     @JsonIgnore

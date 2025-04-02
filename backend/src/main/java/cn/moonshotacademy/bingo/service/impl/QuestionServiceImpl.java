@@ -1,6 +1,7 @@
 package cn.moonshotacademy.bingo.service.impl;
 
 import cn.moonshotacademy.bingo.dto.VideoStateDTO;
+import cn.moonshotacademy.bingo.dto.resQDto;
 import cn.moonshotacademy.bingo.entity.ChoiceEntity;
 import cn.moonshotacademy.bingo.entity.QuestionEntity;
 import cn.moonshotacademy.bingo.entity.TeamEntity;
@@ -17,6 +18,8 @@ import cn.moonshotacademy.bingo.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -88,9 +91,18 @@ public List<Long> chooseQuestion(Long teamid) {
         return teamVideoRepository.showStates(teamid);
     }
     @Override
-    public List<QuestionEntity> showQuestion(Long videoId) {
+    public List<resQDto> showQuestion(Long videoId) {
         List<QuestionEntity> relQ = questionRepository.findByVideoId(videoId);
-        return relQ;
+        List<resQDto> res = relQ.stream()
+        .map(item -> {
+            resQDto dto = new resQDto();
+            dto.setId(item.getId());
+            dto.setContent(item.getContent());
+            dto.setVideoId(videoId);
+            return dto;
+        })
+        .collect(Collectors.toList());
+        return res;
     }
 
     @Override
@@ -110,5 +122,23 @@ public List<Long> chooseQuestion(Long teamid) {
             teamVideo.setState(state); // 修改 state
             teamVideoRepository.save(teamVideo); // 保存到数据库
     }
-}
+    }
+    @Override
+    public boolean submit(Long teamid, Long videoId, int questionId, Long choiceId) {
+        Optional<QuestionEntity> relQ = questionRepository.findById(questionId);
+            QuestionEntity Q = relQ.get();
+            if(Q.getTrueOne() == choiceId) {
+                if(teamVideoRepository.findByTeam_IdAndVideo_Id(teamid, videoId).get().getState() == 3) {
+                    setStates(teamid, videoId, 3);
+                    return false;
+                }
+                setStates(teamid, videoId, 1);
+                return true;
+            }
+            else {
+                setStates(teamid, videoId, 3);
+                return false;
+            }
+    }   
+
 }

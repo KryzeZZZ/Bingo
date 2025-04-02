@@ -31,7 +31,7 @@ public class QuestionController {
 
     }
     @PostMapping("/show")
-    public ResponseDto<List<QuestionEntity>> getquestions(@RequestBody GetQDto getQDto) {
+    public ResponseDto<List<resQDto>> getquestions(@RequestBody GetQDto getQDto) {
         return ResponseDto.success(questionService.showQuestion(getQDto.getVID()));
     }
     @PostMapping("/loadvideo")
@@ -50,9 +50,20 @@ public class QuestionController {
 
     }
     @PostMapping("/setstate")
-    public ResponseDto<Void> setstate(@RequestBody setStateDto setstate) {
-        questionService.setStates(setstate.getTeamId(), setstate.getVideoId(), setstate.getState());
+    public ResponseDto<Void> setstate(@RequestHeader("Authorization") String authorizationHeader, @RequestBody setStateDto setstate) {
+        String token = authorizationHeader.replace("Bearer ", "").trim();
+        Long teamId = Long.parseLong(jwtService.decodeJwt(token));  
+        questionService.setStates(teamId, setstate.getVideoId(), setstate.getState());
+
         return ResponseDto.success();
+
+    }
+    @PostMapping("/submit")
+    public ResponseDto<Boolean> setstate(@RequestBody submitDto submitdto, @RequestHeader("Authorization") String authorizationHeader) {
+        String token = authorizationHeader.replace("Bearer ", "").trim();
+        Long teamId = Long.parseLong(jwtService.decodeJwt(token)); 
+        
+        return ResponseDto.success(questionService.submit(teamId, submitdto.getVid(), submitdto.getQid(), submitdto.getCid()));
 
     }
 }

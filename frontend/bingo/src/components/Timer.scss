@@ -1,0 +1,18 @@
+.timer {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: 2px solid #000;       // 黑色边框
+  border-radius: 8px;           // 圆角效果
+  background-color: #fff;       // 白色背景
+  position: relative;
+  text-align: center;
+
+  // 使用镂空风格显示文字
+  span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: transparent;         // 文字填充透明
+    -webkit-text-stroke: 1px #000; // 使用 Webkit 提供文字描边（在支持的浏览器上有效）
+    font-variant-numeric: tabular-nums; // 等宽数字
+  }
+}

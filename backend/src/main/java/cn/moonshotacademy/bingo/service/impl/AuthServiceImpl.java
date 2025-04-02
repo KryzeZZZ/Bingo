@@ -5,6 +5,7 @@ import cn.moonshotacademy.bingo.exception.*;
 import cn.moonshotacademy.bingo.repository.TeamRepository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,8 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ArrayList<TeamEntity> getTeams() {
         ArrayList<TeamEntity> teams = new ArrayList<>(teamRepository.findAll());
+        teams.sort(Comparator.comparing(TeamEntity::getId));
         return teams;
     }
+    
 }

@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/test/*", "/api/*").permitAll()
-                        .requestMatchers("/auth/login", "/auth/change", "/auth/get", "/question/choose", "/question/loadvideo", "/question/setstate").permitAll()
+                        .requestMatchers("/auth/login", "/auth/change", "/auth/get", "/question/choose","/question/submit", "/question/loadvideo", "/question/setstate").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))

@@ -2,8 +2,9 @@ package cn.moonshotacademy.bingo.dto;
 import lombok.Data;
 
 @Data
-public class setStateDto {
+public class resQDto {
     
+    private Long id;
+    private String content;
     private Long videoId;
-    private int state;
 }

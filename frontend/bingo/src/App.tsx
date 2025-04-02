@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Routes>
         {/* 配置/team路径对应LoginPage */}
-        <Route path="/team" element={<LoginPage />} /> 
+        <Route path="/game" element={<LoginPage />} />
         {/* 可以添加其他路径配置 */}
         <Route path="/bingo" element={<Bingo />} />
         <Route path="/video" element={<Video />} />

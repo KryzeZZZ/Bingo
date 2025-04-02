@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://49.51.207.171:5432/bingo
+    url: jdbc:postgresql://localhost:5432/bingo
     username: nekro_agent
     password: nekro_agent
     driver-class-name: org.postgresql.Driver
@@ -11,3 +11,5 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+server:
+  forward-headers-strategy: native

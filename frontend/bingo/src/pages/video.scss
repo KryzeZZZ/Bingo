@@ -1,13 +1,15 @@
-.container {
+.video-page {
+    width: 100vw;
+    height: 100vh;
     min-height: 60vh !important;
-    bottom: -20vh;
-    gap:0;
-    margin: 0;
-    padding: 0;
-    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 20px;
 }
 .title {
-
     bottom: 0     !important;
 }
 .subtitle {
@@ -17,26 +19,37 @@
 }
 
 .video-player {
-    width: 45vw;
-    height: 45vh;
+    width: 40vw;
+    height: 40vh;
+    -webkit-user-drag: none;
+    user-select: none;
 }
+
 .question {
-    font-size: 1.8vw;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .options {
-    font-size: 1.8vw !important;
+    font-size: 18px;
     display: flex;
     gap: 2vw;
 }
-input[type="radio"] {
+.input-radio {
     width: 2vw;   /* 设置单选框的宽度 */
     height: 20px;  /* 设置单选框的高度 */
     margin-right: 5px;  /* 让标签与单选框之间有一点间距 */
     position: relative;
     bottom: -0.2vw;
-  }
+}
 
-button {
-    position: relative;
-    top: 8vh;
+.btn-submit {
+    border: 1px solid #FFFFFF4D;
+    background-color: rgb(53, 53, 53);
+    align-self: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 8px;
 }
