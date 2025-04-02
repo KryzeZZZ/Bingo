@@ -33,7 +33,8 @@ const LoginPage = () => {
             <GroupSelector onGroupSelected={(choice) => {
                 handleGroupSelected(choice.id)
             }}/>
-            <Button disabled={disabled} type="primary" theme="solid" className={"btn-confirm"} onClick={handleConfirm}>确定</Button>
+            <Button disabled={disabled} type="primary" theme="solid" className={"btn-confirm"}
+                    onClick={handleConfirm}>确定</Button>
         </div>
     );
 };

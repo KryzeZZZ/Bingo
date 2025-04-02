@@ -5,7 +5,9 @@ import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-            <App/>
+        <App/>
+        <div className="moon-container">
             <img className={"moon"} src={"/bg-moon.png"}></img>
+        </div>
     </StrictMode>,
 )

@@ -16,8 +16,8 @@ import {TopSlogan} from "../components/TopSlogan.tsx";
 const Bingo: React.FC = () => {
   return (
       <div className="bingo-container">
-        <TopSlogan/>
-        <Grid/>
+          <TopSlogan/>
+          <Grid/>
       </div>
   );
 };

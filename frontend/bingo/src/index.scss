@@ -1,29 +1,26 @@
-
+*{
+  margin: 0;
+  padding: 0;
+}
   body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100vw;
     display: flex;
     background-color: black;
     overscroll-behavior:none;
-    overflow-y: scroll;
-    overflow-x: hidden;
   }
   #root {
+    width: 100vw;
+    height: 100vh;
+  }
+  .moon-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     .moon {
-      position: absolute;
+      position: fixed;
       bottom: 0;
-      left: 50%;
-      width: 100vw;
-      transform: translateX(-50%);
-      height: 50vh;
-      z-index: -1;
-      opacity: 0.5;
-      min-width: 800px;
+      min-width: max(120vh, 100vw); // 宽度动态调整
+      height: 50vh; // 高度固定
+      opacity: 0.4; // 初始完全可见
+      pointer-events: none;
     }
   }
