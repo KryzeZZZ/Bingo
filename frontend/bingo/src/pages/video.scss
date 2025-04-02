@@ -20,9 +20,11 @@
 
 .video-player {
     width: 40vw;
-    height: 40vh;
+    height: 200px;
+    min-width: 300px;
     -webkit-user-drag: none;
     user-select: none;
+    background-color: red;
 }
 
 .question {
