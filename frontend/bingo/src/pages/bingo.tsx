@@ -14,9 +14,11 @@ import {TopSlogan} from "../components/TopSlogan.tsx";
 
 
 const Bingo: React.FC = () => {
+    const teamId = localStorage.getItem("teamId")
   return (
       <div className="bingo-container">
           <TopSlogan/>
+          <span style={{fontWeight: "bold", fontSize: "1.5rem", color: "white"}}>小组{teamId}</span>
           <Grid/>
       </div>
   );
