@@ -11,8 +11,7 @@
   span {
     font-size: 2rem;
     font-weight: bold;
-    color: transparent;         // 文字填充透明
-    -webkit-text-stroke: 1px #000; // 使用 Webkit 提供文字描边（在支持的浏览器上有效）
+    color: black;
     font-variant-numeric: tabular-nums; // 等宽数字
   }
 }

@@ -20,8 +20,8 @@
 
 .video-player {
     width: 40vw;
-    height: 200px;
     min-width: 300px;
+    aspect-ratio: 3 / 2;
     -webkit-user-drag: none;
     user-select: none;
 }
