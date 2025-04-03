@@ -12,10 +12,12 @@
     height: 100vh;
   }
   .moon-container {
+    z-index: -999;
     display: flex;
     justify-content: center;
     align-items: center;
     .moon {
+      z-index: -999;
       position: fixed;
       bottom: 0;
       min-width: max(120vh, 100vw); // 宽度动态调整
