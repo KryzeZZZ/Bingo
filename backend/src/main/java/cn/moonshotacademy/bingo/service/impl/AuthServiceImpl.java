@@ -1,6 +1,7 @@
 package cn.moonshotacademy.bingo.service.impl;
 import cn.moonshotacademy.bingo.service.*;
 import cn.moonshotacademy.bingo.entity.UserEntity;
+import cn.moonshotacademy.bingo.entity.QuestionEntity;
 import cn.moonshotacademy.bingo.entity.TeamEntity;
 import cn.moonshotacademy.bingo.exception.*;
 import cn.moonshotacademy.bingo.repository.TeamRepository;
@@ -8,9 +9,12 @@ import cn.moonshotacademy.bingo.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Service;
 
 import cn.moonshotacademy.bingo.dto.*;
@@ -62,9 +66,30 @@ public class AuthServiceImpl implements AuthService {
         return teams;
     }
     @Override
-    public ArrayList<UserEntity> getUsers() {
+    public List<UserDto> getUsers() {
         ArrayList<UserEntity> users = new ArrayList<>(userRepository.findAll());
-        users.sort(Comparator.comparing(UserEntity::getId));
-        return users;
+        List<UserDto> res = users.stream()
+        .map(item -> {
+            UserDto dto = new UserDto();
+            dto.setId(item.getId());
+            dto.setName(item.getName());
+            dto.setTeamId(item.getTeamId());
+            return dto;
+        })
+        .collect(Collectors.toList());
+        res.sort(Comparator.comparing(UserDto::getId));
+        return res;
+    }
+
+    @Override
+    public Long exTeam(Long userId) {
+        Optional<UserEntity> user = userRepository.findById(userId);
+        if(user.isPresent()) {
+            UserEntity realUser = user.get();
+            return realUser.getTeamId();
+        }
+        else {
+            throw new BusinessException(ExceptionEnum.USER_NOT_FOUND);
+        }
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import cn.moonshotacademy.bingo.dto.*;
 import cn.moonshotacademy.bingo.entity.ChoiceEntity;
 import cn.moonshotacademy.bingo.entity.VideoEntity;
+import cn.moonshotacademy.bingo.service.AuthService;
 import cn.moonshotacademy.bingo.service.QuestionService;
 
 import jakarta.servlet.http.HttpSession;
@@ -18,9 +19,12 @@ public class QuestionController {
 
     @Autowired
     private QuestionService questionService;
-
+    @Autowired
+    private AuthService authService;
     private Long getTeamIdFromSession(HttpSession session) {
-        Long teamId = (Long) session.getAttribute("teamId");
+        Long userId = (Long) session.getAttribute("userId");
+        System.out.println(userId);
+        Long teamId = authService.exTeam(userId);
         if (teamId == null) {
             throw new RuntimeException("未登录或会话失效");
         }
@@ -51,6 +55,7 @@ public class QuestionController {
     @GetMapping("/state")
     public ResponseDto<List<VideoStateDTO>> getState(HttpSession session) {
         Long teamId = getTeamIdFromSession(session);
+        System.out.println(teamId);
         return ResponseDto.success(questionService.showStates(teamId));
     }
 

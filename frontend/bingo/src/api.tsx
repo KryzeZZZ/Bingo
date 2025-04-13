@@ -12,8 +12,7 @@ import {API_BASE_URL} from './config/config';
 interface GroupData {
     id: number;
     name: string;
-    sessionsNum: number;
-    default: boolean;
+    teamId: number;
 }
 
 // 视频数据接口
@@ -62,8 +61,10 @@ export const submitAnswer = async (vid: number, qid: number, cid: number) => {
 // 获取组列表
 export const getGroupList = async () => {
     try {
+        console.log(API_BASE_URL)
         const response = await axios.get<ApiResponse<GroupData[]>>(`${API_BASE_URL}/auth/get`);
         if (response.status === 200 && response.data && response.data.code === 0) {
+            console.log(response.data.data)
             return response.data.data;
         }
         console.error('API request failed with code:', response.data?.code, 'and message:', response.data?.message);
@@ -96,10 +97,11 @@ export const submitGroupName = async (teamId: number, newName: string) => {
 };
 
 // 登录组
-export const loginGroup = async (teamid: number) => {
+export const loginGroup = async (userId: number, b: number) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/auth/login`, {
-            teamId: teamid
+            id: userId,
+            birth: b
         });
 
         if (response.status === 200) {
