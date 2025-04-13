@@ -13,7 +13,13 @@ public enum ExceptionEnum {
     TEAM_NAME_CHANGED(2004, "Team name has been changed"),
 
     NOT_ENOUGH_QUESTIONS(3001, "There are not enough questions"),
-    ALREADY_CHOSEN(3002, "You have already chose questions");
+    ALREADY_CHOSEN(3002, "You have already chose questions"),
+
+    USER_NOT_FOUND(4001, "User not found"),
+    WRONG_PASSWORD(4002, "The password is wrong"),
+
+    SESSION_OUTDATED(5001, "Another device has logged in"),
+    TOKEN_INVALID(5002, "Token invalid");
 
     private final Integer code;
     private final String message;

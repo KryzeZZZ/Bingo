@@ -4,5 +4,6 @@ import lombok.Data;
 @Data
 public class LoginDto {
     
-    private Long teamId;
+    private Long Id;
+    private String birth;
 }

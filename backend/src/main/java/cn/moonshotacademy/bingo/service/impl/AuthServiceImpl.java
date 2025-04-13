@@ -1,8 +1,10 @@
 package cn.moonshotacademy.bingo.service.impl;
 import cn.moonshotacademy.bingo.service.*;
+import cn.moonshotacademy.bingo.entity.UserEntity;
 import cn.moonshotacademy.bingo.entity.TeamEntity;
 import cn.moonshotacademy.bingo.exception.*;
 import cn.moonshotacademy.bingo.repository.TeamRepository;
+import cn.moonshotacademy.bingo.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -10,6 +12,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import cn.moonshotacademy.bingo.dto.*;
 
 @Service
@@ -19,22 +22,20 @@ public class AuthServiceImpl implements AuthService {
     private TeamRepository teamRepository;
     @Autowired
     private JWTService jwtService;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public String login(LoginDto loginDto) {
-        Optional<TeamEntity> userFromUserName = teamRepository.findById(loginDto.getTeamId());
+        Optional<UserEntity> userFromUserName = userRepository.findById(loginDto.getId());
         if (!userFromUserName.isPresent()) {
-            throw new BusinessException(ExceptionEnum.TEAM_NOT_FOUND);
+            throw new BusinessException(ExceptionEnum.USER_NOT_FOUND);
         }
-        TeamEntity user = userFromUserName.get();
-        if (user.getSessionsNum() == 2) {
-            throw new BusinessException(ExceptionEnum.NO_SESSIONS_REMAIN);
-        }
-        else {
-            user.setSessionsNum(user.getSessionsNum()+1);
-            teamRepository.save(user);
-        }
-        return jwtService.setToken(user);
+        UserEntity user = userFromUserName.get();
+        System.out.println(user.getBirth());
+        if(!user.getBirth().equals(loginDto.getBirth())) throw new BusinessException(ExceptionEnum.WRONG_PASSWORD);
+        String token = jwtService.setToken(user);
+        return token;
     }
 
     @Override
@@ -60,5 +61,10 @@ public class AuthServiceImpl implements AuthService {
         teams.sort(Comparator.comparing(TeamEntity::getId));
         return teams;
     }
-    
+    @Override
+    public ArrayList<UserEntity> getUsers() {
+        ArrayList<UserEntity> users = new ArrayList<>(userRepository.findAll());
+        users.sort(Comparator.comparing(UserEntity::getId));
+        return users;
+    }
 }
