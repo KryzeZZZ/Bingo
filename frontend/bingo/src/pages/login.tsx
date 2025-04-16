@@ -45,10 +45,18 @@ const LoginPage = () => {
       <GroupSelector onGroupSelected={handleGroupSelected} />
       <Button
         disabled={disabled}
-        type="primary"
-        theme="solid"
+        type="tertiary"
+        theme="outline"
         className={"btn-confirm"}
         onClick={handleConfirm}
+        style={{
+          border: "1px solid white",
+          borderRadius: 0,
+          color: "white",
+          fontSize: 16,
+          height: 50,
+          marginTop: 200
+        }}
       >
         确定
       </Button>

@@ -1,7 +1,7 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 18vh);  // 三列
-  grid-template-rows: repeat(3, 18vh);     // 三行
+  grid-template-columns: repeat(4, 16vh);  // 三列
+  grid-template-rows: repeat(4, 16vh);     // 三行
   gap: 2vh;
 }
 

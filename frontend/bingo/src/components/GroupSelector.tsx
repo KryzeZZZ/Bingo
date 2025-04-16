@@ -67,7 +67,7 @@ const GroupSelector: React.FC<GroupSelectorProps> = ({ onGroupSelected }) => {
             } : null}
             onChange={handleGroupChange}
             options={groupOptions}
-            placeholder="请选择你所在的组"
+            placeholder="选择你的号码"
             isSearchable={false}
             styles={{
               control: (base) => ({
@@ -126,29 +126,35 @@ const GroupSelector: React.FC<GroupSelectorProps> = ({ onGroupSelected }) => {
           />
 
           {selectedGroup && (
-            <div className="BirthInput" style={{ marginTop: "2vh" }}>
-              <label
+            <div className="BirthInput" style={{
+              marginTop: "2vh",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "start",
+              width: "100%",
+              color: "white"
+            }}>
+              <div
                 style={{
                   color: "white",
                   marginBottom: "8px",
-                  display: "block",
-                  fontSize: "2vh"
+                  fontSize: 16
                 }}
               >
-                请输入生日（格式：YYYY-MM-DD）：
-              </label>
+                请输入出生日期
+              </div>
               <input
                 type="date"
                 value={birthRaw}
                 onChange={handleBirthChange}
                 style={{
-                  padding: "0.8vh 1vh",
+                  padding: "10px 20px",
+                  boxSizing: "border-box",
                   fontSize: "2vh",
                   border: "1px solid white",
                   backgroundColor: "transparent",
                   color: "white",
-                  borderRadius: "4px",
-                  width: "200px"
+                  width: "100%",
                 }}
               />
             </div>

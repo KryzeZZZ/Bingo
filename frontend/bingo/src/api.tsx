@@ -104,7 +104,7 @@ export const loginGroup = async (userId: number, b: number) => {
             birth: b
         });
 
-        if (response.status === 200) {
+        if (response.status === 200 && response.data.code === 0) {
             console.log('登录成功:', response.data);
             localStorage.setItem("authToken", response.data.data)
             return;
@@ -134,6 +134,7 @@ export const getVideoStates = async () => {
                 Authorization: `Bearer ${token}`,  // 将 token 添加到请求头
             }
         });
+        console.log(response.data)
 
         if (response.status === 200 && response.data && response.data.code === 0) {
             console.log(localStorage.getItem("teamId"))

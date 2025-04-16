@@ -45,7 +45,7 @@ public List<Long> chooseQuestion(Long teamid) {
     List<VideoEntity> avaQ = videoRepository.findAll();  // 确保查询没有条件限制
     List<VideoStateDTO> check = teamVideoRepository.showStates(teamid);
     if(check.isEmpty() == false) throw new BusinessException(ExceptionEnum.ALREADY_CHOSEN);
-    if (avaQ.size() < 9) {
+    if (avaQ.size() < 16) {
         throw new BusinessException(ExceptionEnum.NOT_ENOUGH_QUESTIONS);
     }
 
@@ -58,7 +58,7 @@ public List<Long> chooseQuestion(Long teamid) {
     Random rand = new Random();
     List<Long> selectedIds = rand.ints(0, ids.size())  // 随机索引
                                   .distinct()
-                                  .limit(9)
+                                  .limit(16)
                                   .mapToObj(ids::get)
                                   .collect(Collectors.toList());
 
